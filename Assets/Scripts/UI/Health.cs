@@ -12,10 +12,11 @@ public class Health : MonoBehaviour
 
     private int  _maxHp;
     private int _currentHp;
+    public int CurrentHp => _currentHp;
 
     public event Action<int, int> OnHealthChanged;
 
-    void Start()
+    private void Awake()
     {
         if (_stats != null)
         {
@@ -26,14 +27,17 @@ public class Health : MonoBehaviour
             _maxHp = _hpFromInspector;
         }
         _currentHp = _maxHp;
+    }
+
+    void Start()
+    {
+        
         NotifyHealthChanged();
-        StartCoroutine(TestDamage());
     }
 
     private void NotifyHealthChanged()
     {
-        OnHealthChanged.Invoke(_currentHp, _maxHp);
-        Debug.Log($"current = {_currentHp} max = {_maxHp}");
+        OnHealthChanged?.Invoke(_currentHp, _maxHp);
     }
 
     public void TakeDamage(int damage)
@@ -54,14 +58,5 @@ public class Health : MonoBehaviour
     private void Die()
     {
         Debug.Log("Временная заглушка...");
-    }
-
-    private IEnumerator TestDamage()
-    {
-       
-
-        TakeDamage(20);
-
-        yield return new WaitForSeconds(1f);
     }
 }
