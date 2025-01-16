@@ -14,3 +14,8 @@ public enum EnemyState
     Chase,
     Attack,
 }
+
+public enum ItemObjectPool
+{
+    Cartridges
+}
