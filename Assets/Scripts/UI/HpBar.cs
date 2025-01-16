@@ -7,7 +7,6 @@ public class HpBar : MonoBehaviour
     private Health _health;
 
     private int _previousHP; // Предыдущее значение здоровья
-
     private void Awake()
     {
         _health = GetComponent<Health>();
@@ -27,8 +26,6 @@ public class HpBar : MonoBehaviour
     {
         if (currentHP == _previousHP)
             return;
-
-        Debug.Log($"{currentHP}, maxHp = {maxHP}");
 
         if (_fill != null)
         {
