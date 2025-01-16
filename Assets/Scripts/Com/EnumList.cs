@@ -17,5 +17,6 @@ public enum EnemyState
 
 public enum ItemObjectPool
 {
-    Cartridges
+    Pants,
+    AK
 }
