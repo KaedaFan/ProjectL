@@ -118,7 +118,6 @@ public class ObjectPoolForItemDrop : MonoBehaviour
             {
                 itemDrop.SetActive(false);
                 _poolDictionary[itemDropName].Enqueue(itemDrop);
-                Debug.Log("Object has been returned to the pool");
             }
             else
             {

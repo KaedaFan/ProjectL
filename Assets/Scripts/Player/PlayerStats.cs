@@ -9,9 +9,10 @@ public class PlayerStats : Stats
     [SerializeField] private EffectObjectPool _nameProjectile;
     [SerializeField] private float _throwForce;
     [SerializeField] private int _damageAmount;
+    [SerializeField] private int _maxCountBullets;
 
     public EffectObjectPool NameProjectile => _nameProjectile;
     public float ThrowForce => _throwForce;
     public int DamageAmount => _damageAmount;
-
+    public int MaxCountBullets => _maxCountBullets;
 }

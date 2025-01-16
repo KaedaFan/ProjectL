@@ -119,7 +119,6 @@ public class ObjectPoolForEnemy : MonoBehaviour
             {
                 enemy.SetActive(false);
                 _poolDictionary[enemyName].Enqueue(enemy);
-                Debug.Log("Object has been returned to the pool");
             }
             else
             {

@@ -1,16 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
     [SerializeField] private PlayerStats _stats;
+    [SerializeField] private TMP_Text _textBullet;
 
     private EffectObjectPool _nameProjectileInObjectPool = EffectObjectPool.Bullet;
 
     private float _throwForce = 10f;
     private int _damageAmount = 10;
     private float _rangeAttack = 20f;
+
+    private int _maxCountBullet = 100;
+    private int _currentCountBullet;
 
     private Transform _target;
 
@@ -22,7 +27,10 @@ public class PlayerShoot : MonoBehaviour
             _throwForce = _stats.ThrowForce;
             _damageAmount = _stats.DamageAmount;
             _rangeAttack = _stats.RangeAttack;
+            _maxCountBullet = _stats.MaxCountBullets;
         }
+        _currentCountBullet = _maxCountBullet;
+        UpdateBulletText();
     }
 
     public void Shoot()
@@ -32,6 +40,12 @@ public class PlayerShoot : MonoBehaviour
         if (_target == null)
         {
             Debug.Log("No enemies nearby to shoot at");
+            return;
+        }
+
+        if (_currentCountBullet <= 0)
+        {
+            Debug.Log("Plug. Out of ammo.");
             return;
         }
 
@@ -58,6 +72,10 @@ public class PlayerShoot : MonoBehaviour
             projectile.AddComponent<ProjectileMove>();
         }
 
+        _currentCountBullet--;
+        if (_currentCountBullet <= 0) _currentCountBullet = 0;
+
+        UpdateBulletText();
         projectileMove.Initialize(_throwForce, _damageAmount, _target, _nameProjectileInObjectPool);
     }
 
@@ -79,6 +97,11 @@ public class PlayerShoot : MonoBehaviour
         }
 
         return nearestTarget;
+    }
+
+    private void UpdateBulletText()
+    {
+        if (_textBullet != null) _textBullet.text = _currentCountBullet.ToString();
     }
 
     public void SetNewProjectileForshoot(EffectObjectPool newProjectile)

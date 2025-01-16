@@ -18,3 +18,4 @@ MonoBehaviour:
   _nameProjectile: 0
   _throwForce: 10
   _damageAmount: 10
+  _maxCountBullets: 50

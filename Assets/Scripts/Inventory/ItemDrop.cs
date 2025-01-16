@@ -8,7 +8,6 @@ public class ItemDrop : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Item OP");
         if (_itemType == null)
         {
             Debug.LogError($"Item {gameObject.name} don't have Item type");
@@ -17,7 +16,6 @@ public class ItemDrop : MonoBehaviour
 
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Item in Player");
             ObjectPoolForItemDrop.Instance.ReturnItemDrop(_itemType.NameItemInObjectPool, gameObject);
             Inventory.Instance.AddItem(_itemType, _countItemInDrop);
         }

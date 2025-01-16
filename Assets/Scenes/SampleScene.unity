@@ -1363,6 +1363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stats: {fileID: 11400000, guid: 6a3a140d40abee242825abe245987c85, type: 2}
+  _textBullet: {fileID: 2023592165}
 --- !u!114 &885436713
 MonoBehaviour:
   m_ObjectHideFlags: 0
