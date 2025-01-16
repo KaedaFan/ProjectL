@@ -61,7 +61,7 @@ public class ObjectPoolForEnemy : MonoBehaviour
     /// <param name="position">The position where the enemy should be spawned.</param>
     /// <param name="rotation">The rotation of the enemy when spawned.</param>
     /// <returns>The requested GameObject if available, otherwise null.</returns>
-    public GameObject GetEnemy(EnemyObjectPool enemyName, Vector3 position, Quaternion rotation)
+    public GameObject GetEnemy(EnemyObjectPool enemyName, Vector2 position, Quaternion rotation)
     {
         if (!_poolDictionary.ContainsKey(enemyName))
         {
@@ -133,6 +133,10 @@ public class ObjectPoolForEnemy : MonoBehaviour
         }
     }
 
+    public List<EnemyType> GetEnemyTypes()
+    {
+        return _enemyTypes;
+    }
 
 
     [System.Serializable]

@@ -9,14 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10e7dba748f5a2646baff4b6c70efce6, type: 3}
-  m_Name: Enemy1
+  m_Script: {fileID: 11500000, guid: 9d17a511dc7525348a383543b2acb9e7, type: 3}
+  m_Name: Cartridges
   m_EditorClassIdentifier: 
-  _maxHp: 50
-  _movementSpeed: 2
-  _rangeAttack: 1
-  _visibilityRange: 10
-  _nameEnemyIbObjectPool: 0
-  _attackDamage: 10
-  _attackSpeed: 1
-  _itemDropsFromEnemy: 00000000
+  _itemName: Cartridges
+  _itemImage: {fileID: 21300000, guid: 0da63bf69e254aa4a83c345c3de497c8, type: 3}

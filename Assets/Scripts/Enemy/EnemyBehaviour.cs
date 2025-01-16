@@ -19,6 +19,8 @@ public class EnemyBehaviour : MonoBehaviour
     private Transform _player;
     private bool _isAttacking = false;
 
+    private List<ItemObjectPool> _itemDropsList = new List<ItemObjectPool>();
+
     private void Awake()
     {
         if (_enemyStats != null)
@@ -26,9 +28,12 @@ public class EnemyBehaviour : MonoBehaviour
             _nameEnemyInObjectPool = _enemyStats.NameEnemyInOjbectPool;
             _visibilityRange = _enemyStats.VisibilityRange;
             _moveSpeed = _enemyStats.MovementSpeed;
+
             _attackRange = _enemyStats.RangeAttack;
             _attackDamage = _enemyStats.AttackDamage;
             _attackSpeed = _enemyStats.AttackSpeed;
+
+            _itemDropsList = _enemyStats.ItemDropsFromEnemy;
 
             _startVisibilityRange = _visibilityRange;
         }
@@ -127,6 +132,23 @@ public class EnemyBehaviour : MonoBehaviour
         if (this.isActiveAndEnabled)
         {
             ObjectPoolForEnemy.Instance.ReturnEnemy(_nameEnemyInObjectPool, gameObject);
+
+            if (_itemDropsList.Count > 0)
+            {
+                ItemObjectPool itemForDrop = SelectItemDrop();
+
+                EnemyItemDropSystem.Instance.ItemDropFromEnemy(itemForDrop, transform.position);
+            }
         }
     }
+
+    //Selecting an item for drop
+    private ItemObjectPool SelectItemDrop()
+    {
+        int randomIndex = Random.Range(0, _itemDropsList.Count);
+
+        Debug.Log(randomIndex);
+        return _itemDropsList[randomIndex];
+    }
+
 }

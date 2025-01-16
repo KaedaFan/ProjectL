@@ -17,6 +17,8 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    private InventoryUI _inventoryUI;
+
     private void Awake()
     {
         if (_instance == null)
@@ -28,6 +30,7 @@ public class Inventory : MonoBehaviour
         {
             Destroy(gameObject); 
         }
+        _inventoryUI = GetComponent<InventoryUI>();
     }
 
     public List<InventoryItem> items = new List<InventoryItem>();
@@ -48,6 +51,7 @@ public class Inventory : MonoBehaviour
         {
             items.Add(new InventoryItem { Item = item, Count = count });
         }
+        _inventoryUI.UpdateUI();
     }
 
     /// <summary>

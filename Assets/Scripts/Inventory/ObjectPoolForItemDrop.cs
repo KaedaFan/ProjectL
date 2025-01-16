@@ -61,7 +61,7 @@ public class ObjectPoolForItemDrop : MonoBehaviour
     /// <param name="position">The position where the item drop should be spawned.</param>
     /// <param name="rotation">The rotation of the item drop when spawned.</param>
     /// <returns>The requested GameObject if available, otherwise null.</returns>
-    public GameObject GetItemDrop(ItemObjectPool itemName, Vector3 position, Quaternion rotation)
+    public GameObject GetItemDrop(ItemObjectPool itemName, Vector2 position)
     {
         if (!_poolDictionary.ContainsKey(itemName))
         {
@@ -95,7 +95,6 @@ public class ObjectPoolForItemDrop : MonoBehaviour
         }
         objectToSpawn.SetActive(true);
         objectToSpawn.transform.position = position;
-        objectToSpawn.transform.rotation = rotation;
 
         return objectToSpawn;
     }
