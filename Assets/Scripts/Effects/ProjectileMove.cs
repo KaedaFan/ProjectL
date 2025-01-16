@@ -6,7 +6,7 @@ public class ProjectileMove : MonoBehaviour
     private float _moveSpeed;
     private int _damageAmount;
     private Transform _target;
-    private string _nameEffectInObjectPool;
+    private EffectObjectPool _nameEffectInObjectPool;
     private float _maxMovetime = 10f;
 
     private Coroutine _movementCoroutine;
@@ -18,7 +18,7 @@ public class ProjectileMove : MonoBehaviour
     /// <param name="damage">Damage dealt by the projectile</param>
     /// <param name="target">The target to which the projectile is moving</param>
     /// <param name="nameInObjectPool">The name of the effect for the projectile in the object pool</param>
-    public void Initialize(float speed, int damage, Transform target, string nameInObjectPool)
+    public void Initialize(float speed, int damage, Transform target, EffectObjectPool nameInObjectPool)
     {
         _moveSpeed = speed;
         _damageAmount = damage;
@@ -69,7 +69,6 @@ public class ProjectileMove : MonoBehaviour
                 enemy.TakeDamage(_damageAmount);
             }
         }
-
         ReturnToPool();
     }
 

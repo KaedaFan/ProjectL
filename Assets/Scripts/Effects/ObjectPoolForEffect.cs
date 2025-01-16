@@ -18,8 +18,8 @@ public class ObjectPoolForEffect : MonoBehaviour
         }
     }
 
-    public List<AbilityType> abilityTypes = new List<AbilityType>();
-    private Dictionary<string, Queue<GameObject>> abilityPools;
+    public List<EffectType> effectTypes = new List<EffectType>();
+    private Dictionary<EffectObjectPool, Queue<GameObject>> _effectPools;
 
     private void Awake()
     {
@@ -37,47 +37,47 @@ public class ObjectPoolForEffect : MonoBehaviour
 
     private void InitializePools()
     {
-        abilityPools = new Dictionary<string, Queue<GameObject>>();
+        _effectPools = new Dictionary<EffectObjectPool, Queue<GameObject>>();
 
-        foreach (var abilityType in abilityTypes)
+        foreach (var effectType in effectTypes)
         {
             Queue<GameObject> pool = new Queue<GameObject>();
 
-            for (int i = 0; i < abilityType.InitialPoolSize; i++)
+            for (int i = 0; i < effectType.InitialPoolSize; i++)
             {
-                GameObject obj = Instantiate(abilityType.Prefab);
+                GameObject obj = Instantiate(effectType.Prefab);
                 obj.SetActive(false);
                 pool.Enqueue(obj);
             }
 
-            abilityPools.Add(abilityType.Name, pool);
+            _effectPools.Add(effectType.Name, pool);
         }
     }
 
     /// <summary>
     /// Retrieves an effect from the object pool.
     /// </summary>
-    /// <param name="abilityName">The name of the object as defined in the pool (via inspector).</param>
+    /// <param name="effectName">The name of the object as defined in the pool (via inspector).</param>
     /// <returns>The requested GameObject if available, otherwise null.</returns>
-    public GameObject GetEffect(string abilityName)
+    public GameObject GetEffect(EffectObjectPool effectName)
     {
-        if (abilityPools.ContainsKey(abilityName))
+        if (_effectPools.ContainsKey(effectName))
         {
-            if (abilityPools[abilityName].Count > 0)
+            if (_effectPools[effectName].Count > 0)
             {
-                GameObject ability = abilityPools[abilityName].Dequeue();
-                ability.SetActive(true);
-                return ability;
+                GameObject effect = _effectPools[effectName].Dequeue();
+                effect.SetActive(true);
+                return effect;
             }
             else
             {
-                Debug.LogWarning($"No available objects in pool '{abilityName}'.");
+                Debug.LogWarning($"No available objects in pool '{effectName}'.");
                 return null;
             }
         }
         else
         {
-            Debug.LogWarning($"No pool found for effect '{abilityName}'.");
+            Debug.LogWarning($"No pool found for effect '{effectName}'.");
             return null;
         }
     }
@@ -85,27 +85,27 @@ public class ObjectPoolForEffect : MonoBehaviour
     /// <summary>
     /// Returns an effect back to the pool.
     /// </summary>
-    /// <param name="abilityName">The name of the effect as defined in the pool (via inspector).</param>
-    /// <param name="ability">Reference to the object being returned.</param>
-    public void ReturnEffect(string abilityName, GameObject ability)
+    /// <param name="effectName">The name of the effect as defined in the pool (via inspector).</param>
+    /// <param name="effect">Reference to the object being returned.</param>
+    public void ReturnEffect(EffectObjectPool effectName, GameObject effect)
     {
-        if (abilityPools.ContainsKey(abilityName))
+        if (_effectPools.ContainsKey(effectName))
         {
-            ability.SetActive(false);
-            abilityPools[abilityName].Enqueue(ability);
+            effect.SetActive(false);
+            _effectPools[effectName].Enqueue(effect);
         }
         else
         {
-            Debug.LogWarning($"Attempted to return object to non-existent pool '{abilityName}'. Destroying object.");
-            Destroy(ability);
+            Debug.LogWarning($"Attempted to return object to non-existent pool '{effectName}'. Destroying object.");
+            Destroy(effect);
         }
     }
 }
 
 [System.Serializable]
-public class AbilityType
+public class EffectType
 {
-    public string Name;
+    public EffectObjectPool Name;
     public GameObject Prefab;
     public int InitialPoolSize;
 }
