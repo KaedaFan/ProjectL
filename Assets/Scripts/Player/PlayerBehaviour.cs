@@ -17,6 +17,7 @@ public class PlayerBehaviour : MonoBehaviour
             return _instance;
         }
     }
+    public Health HealthPlayer;
 
     private void Awake()
     {
@@ -29,6 +30,8 @@ public class PlayerBehaviour : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        HealthPlayer = GetComponent<Health>();
     }
 
     public void Die()

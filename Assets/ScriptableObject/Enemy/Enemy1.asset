@@ -15,5 +15,7 @@ MonoBehaviour:
   _maxHp: 50
   _movementSpeed: 2
   _rangeAttack: 1
-  _visibilityRange: 50
+  _visibilityRange: 10
   _nameEnemyIbObjectPool: 0
+  _attackDamage: 10
+  _attackSpeed: 1
