@@ -44,7 +44,7 @@ public class ObjectPoolForEnemy : MonoBehaviour
             Queue<GameObject> objectPool = new Queue<GameObject>();
 
             for (int i = 0; i < enemyType.PoolSize; i++)
-            {
+            {  
                 GameObject obj = Instantiate(enemyType.Prefab);
                 obj.SetActive(false);
                 objectPool.Enqueue(obj);

@@ -6,7 +6,7 @@ public class HpBar : MonoBehaviour
     [SerializeField] private Transform _fill;
     private Health _health;
 
-    private int _previousHP; // Предыдущее значение здоровья
+    private int _previousHP; // Previous health value
     private void Awake()
     {
         _health = GetComponent<Health>();
@@ -33,7 +33,7 @@ public class HpBar : MonoBehaviour
 
             _fill.localScale = new Vector3(fillAmount, _fill.localScale.y, _fill.localScale.z);
 
-            // Сдвиг объекта, чтобы создавалась иллюзия, что хп бар уменьшается только с одной стороны
+            // Shifting an object to create the illusion that the HP bar is decreasing on only one side
             float fillWidth = _fill.GetComponent<SpriteRenderer>().bounds.size.x;
             float newXPosition = -(1f - fillAmount) * (fillWidth / 2f) - 0.1f;
             _fill.localPosition = new Vector3(newXPosition, _fill.localPosition.y, _fill.localPosition.z);
