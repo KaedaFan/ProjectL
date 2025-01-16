@@ -31,7 +31,6 @@ public class Health : MonoBehaviour
 
     void Start()
     {
-        
         NotifyHealthChanged();
     }
 
@@ -57,6 +56,21 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("Временная заглушка...");
+        if (gameObject.tag == "Player")
+        {
+            PlayerBehaviour playerBehaviour = gameObject.GetComponent<PlayerBehaviour>();
+            if (playerBehaviour != null)
+            {
+                playerBehaviour.Die();
+            }
+        }
+        else
+        {
+            EnemyBehaviour enemyBehaviour = gameObject.GetComponent<EnemyBehaviour>();
+            if (enemyBehaviour != null)
+            {
+                enemyBehaviour.Die();
+            }
+        }
     }
 }

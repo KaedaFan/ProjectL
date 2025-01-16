@@ -19,7 +19,7 @@ public class ObjectPoolForEnemy : MonoBehaviour
     }
 
     [SerializeField] private List<EnemyType> _enemyTypes;
-    private Dictionary<string, Queue<GameObject>> _poolDictionary;
+    private Dictionary<EnemyObjectPool, Queue<GameObject>> _poolDictionary;
 
     private void Awake()
     {
@@ -37,7 +37,7 @@ public class ObjectPoolForEnemy : MonoBehaviour
 
     private void InitializePools()
     {
-        _poolDictionary = new Dictionary<string, Queue<GameObject>>();
+        _poolDictionary = new Dictionary<EnemyObjectPool, Queue<GameObject>>();
 
         foreach (var enemyType in _enemyTypes)
         {
@@ -61,7 +61,7 @@ public class ObjectPoolForEnemy : MonoBehaviour
     /// <param name="position">The position where the enemy should be spawned.</param>
     /// <param name="rotation">The rotation of the enemy when spawned.</param>
     /// <returns>The requested GameObject if available, otherwise null.</returns>
-    public GameObject GetEnemy(string enemyName, Vector3 position, Quaternion rotation)
+    public GameObject GetEnemy(EnemyObjectPool enemyName, Vector3 position, Quaternion rotation)
     {
         if (!_poolDictionary.ContainsKey(enemyName))
         {
@@ -105,7 +105,7 @@ public class ObjectPoolForEnemy : MonoBehaviour
     /// </summary>
     /// <param name="enemyName">The name of the enemy type as defined in the pool.</param>
     /// <param name="enemy">The GameObject to return to the pool.</param>
-    public void ReturnEnemy(string enemyName, GameObject enemy)
+    public void ReturnEnemy(EnemyObjectPool enemyName, GameObject enemy)
     {
         if (enemy == null)
         {
@@ -138,7 +138,7 @@ public class ObjectPoolForEnemy : MonoBehaviour
     [System.Serializable]
     public class EnemyType
     {
-        public string Name;
+        public EnemyObjectPool Name;
         public GameObject Prefab;
         public int PoolSize;
     }
