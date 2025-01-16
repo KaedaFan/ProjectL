@@ -7,3 +7,11 @@ public enum EnemyObjectPool
 {
     Enemy
 }
+
+public enum EnemyState
+{
+    Idle,
+    Chase,
+    Attack,
+    Die
+}

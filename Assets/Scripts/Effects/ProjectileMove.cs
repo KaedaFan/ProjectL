@@ -44,9 +44,9 @@ public class ProjectileMove : MonoBehaviour
                 yield break;
             }
 
-            transform.position = Vector3.MoveTowards(transform.position, _target.position, _moveSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, _target.position, _moveSpeed * Time.deltaTime);
 
-            if (Vector3.Distance(transform.position, _target.position) < 0.1f)
+            if (Vector2.Distance(transform.position, _target.position) < 0.1f)
             {
                 HitTarget();
                 yield break;

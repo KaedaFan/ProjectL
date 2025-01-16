@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHp: 50
   _movementSpeed: 2
+  _rangeAttack: 1
+  _visibilityRange: 50
+  _nameEnemyIbObjectPool: 0

@@ -241,11 +241,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7439603606293212034, guid: 552efee72ff65a647b1e0f9292086cdf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.9971206
+      value: 7.45
       objectReference: {fileID: 0}
     - target: {fileID: 7439603606293212034, guid: 552efee72ff65a647b1e0f9292086cdf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.8817893
+      value: -3.65
       objectReference: {fileID: 0}
     - target: {fileID: 7439603606293212034, guid: 552efee72ff65a647b1e0f9292086cdf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -311,7 +311,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c310633d08bbf984197167e8fb0dc310, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyTypes: []
+  _enemyTypes:
+  - Name: 0
+    Prefab: {fileID: 2825978827821912814, guid: 552efee72ff65a647b1e0f9292086cdf, type: 3}
+    PoolSize: 5
 --- !u!4 &366880759
 Transform:
   m_ObjectHideFlags: 0
@@ -342,7 +345,7 @@ MonoBehaviour:
   effectTypes:
   - Name: 0
     Prefab: {fileID: 232091517195579104, guid: da48d9628ee9a6043b2046a4e40cf683, type: 3}
-    InitialPoolSize: 7
+    InitialPoolSize: 15
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,6 +938,7 @@ GameObject:
   - component: {fileID: 885436709}
   - component: {fileID: 885436710}
   - component: {fileID: 885436712}
+  - component: {fileID: 885436713}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1046,7 +1050,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &885436709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1113,6 +1117,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stats: {fileID: 11400000, guid: 6a3a140d40abee242825abe245987c85, type: 2}
+--- !u!114 &885436713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885436703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b6963a8e76bc4245b0804b6f0b7163f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1321490805
 PrefabInstance:
   m_ObjectHideFlags: 0

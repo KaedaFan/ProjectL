@@ -5,12 +5,9 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    //Характеристики из ScriptableObject файла если он используется для этого юнита
     [SerializeField] Stats _stats;
-    //Хп из инспектора, если SO не используется
-    [SerializeField] private int  _hpFromInspector = 100;
 
-    private int  _maxHp;
+    private int  _maxHp = 100;
     private int _currentHp;
     public int CurrentHp => _currentHp;
 
@@ -22,10 +19,7 @@ public class Health : MonoBehaviour
         {
             _maxHp = _stats.MaxHp;
         }
-        else
-        {
-            _maxHp = _hpFromInspector;
-        }
+
         _currentHp = _maxHp;
     }
 
