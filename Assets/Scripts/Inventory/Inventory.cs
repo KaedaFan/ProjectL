@@ -18,6 +18,7 @@ public class Inventory : MonoBehaviour
     }
 
     private InventoryUI _inventoryUI;
+    public List<InventoryItem> items = new List<InventoryItem>();
 
     private void Awake()
     {
@@ -28,18 +29,23 @@ public class Inventory : MonoBehaviour
         }
         else if (_instance != this)
         {
-            Destroy(gameObject); 
+            Destroy(gameObject);
         }
         _inventoryUI = GetComponent<InventoryUI>();
+        
     }
 
-    public List<InventoryItem> items = new List<InventoryItem>();
+    private void Start()
+    {
+        LoadFromDatabase();
+    }
+
 
     /// <summary>
-    /// Добавление предмета в инвентарь
+    /// Adding an item to inventory
     /// </summary>
-    /// <param name="item">Ссылка на SO объект предмета</param>
-    /// <param name="count">Количество предмета в инвентаре</param>
+    /// <param name="item">Reference to SO object item</param</param>
+    /// <param name="count">Count of items in inventory</param>
     public void AddItem(Item item, int count = 1)
     {
         var existingItem = items.Find(i => i.Item == item);
@@ -51,21 +57,72 @@ public class Inventory : MonoBehaviour
         {
             items.Add(new InventoryItem { Item = item, Count = count });
         }
+
+        SaveToDatabase(); 
         _inventoryUI.UpdateUI();
     }
 
     /// <summary>
-    /// Удаление предмета из инвентаря
+    /// Removing an item from inventory
     /// </summary>
-    /// <param name="item">Ссылка на SO объект предмета</param>
+    /// <param name="item">Reference to SO object item</param>
     public void RemoveItem(Item item)
     {
         var existingItem = items.Find(i => i.Item == item);
         if (existingItem != null)
         {
             items.Remove(existingItem);
+            SaveToDatabase(); 
+            _inventoryUI.UpdateUI();
         }
     }
+
+    public void SaveToDatabase()
+    {
+        var realm = DatabaseManager.Instance.GetRealmInstance();
+
+        realm.Write(() =>
+        {
+            foreach (var inventoryItem in items)
+            {
+                var dbItem = realm.Find<InventoryItemModel>(inventoryItem.Item.Id);
+                if (dbItem != null)
+                {
+                    dbItem.Count = inventoryItem.Count;
+                }
+                else
+                {
+                    realm.Add(new InventoryItemModel
+                    {
+                        ItemId = inventoryItem.Item.Id,
+                        Count = inventoryItem.Count
+                    });
+                }
+            }
+        });
+    }
+
+    public void LoadFromDatabase()
+    {
+        var realm = DatabaseManager.Instance.GetRealmInstance();
+        items.Clear();
+
+        foreach (var dbItem in realm.All<InventoryItemModel>())
+        {
+            var itemSO = Resources.Load<Item>($"Items/{dbItem.ItemId}");
+            if (itemSO != null)
+            {
+                items.Add(new InventoryItem { Item = itemSO, Count = dbItem.Count });
+            }
+            else
+            {
+                Debug.LogWarning($"Item with ID {dbItem.ItemId} not found in Resources.");
+            }
+        }
+
+        _inventoryUI.UpdateUI();
+    }
+
 }
 
 [System.Serializable]

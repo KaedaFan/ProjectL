@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MeleeEnemy
   m_EditorClassIdentifier: 
   _maxHp: 50
-  _movementSpeed: 5
+  _movementSpeed: 3
   _rangeAttack: 1
   _visibilityRange: 35
   _nameEnemyIbObjectPool: 0

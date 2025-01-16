@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 896320131751200892}
   - component: {fileID: 896320131751200893}
   - component: {fileID: 8505060018959419423}
+  - component: {fileID: -9049000438706212868}
   - component: {fileID: 8808376451161057533}
   - component: {fileID: 5006824799813368879}
   - component: {fileID: 146806994158315869}
@@ -119,6 +120,44 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!68 &-9049000438706212868
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896320131751200883}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.020866662, y: -0.09690554}
+  - {x: -0.022531915, y: -0.09599671}
+  - {x: -0.02392843, y: -0.34873927}
+  - {x: -0.08106493, y: -0.35628086}
+  - {x: -0.07876819, y: -0.08235105}
+  - {x: -0.11830439, y: 0.11911813}
+  - {x: -0.077849336, y: 0.17308767}
+  - {x: -0.028562084, y: 0.18280782}
+  - {x: -0.051042844, y: 0.23253794}
+  - {x: -0.057493098, y: 0.27408078}
+  - {x: -0.0386568, y: 0.31280333}
+  - {x: 0.03092161, y: 0.32154405}
+  - {x: 0.040420406, y: 0.18205133}
+  - {x: 0.13333014, y: 0.12861171}
+  - {x: 0.074425526, y: -0.08101933}
+  - {x: 0.06808327, y: -0.35977486}
+  - {x: 0.024655413, y: -0.35005206}
+  - {x: 0.025163436, y: -0.10417353}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!114 &8808376451161057533
 MonoBehaviour:
   m_ObjectHideFlags: 0

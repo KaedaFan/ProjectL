@@ -9,13 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a575eddfeba42949aad483528728111, type: 3}
-  m_Name: BasicPlayerStats
+  m_Script: {fileID: 11500000, guid: 9d17a511dc7525348a383543b2acb9e7, type: 3}
+  m_Name: 157
   m_EditorClassIdentifier: 
-  _maxHp: 100
-  _movementSpeed: 10
-  _rangeAttack: 20
-  _nameProjectile: 0
-  _throwForce: 10
-  _damageAmount: 10
-  _maxCountBullets: 50
+  _id: 157
+  _itemName: AK-74
+  _itemImage: {fileID: 21300000, guid: 663a78f8f9bcb584991fd1cb7270087d, type: 3}
+  _description: 
+  _nameItemInObjectPool: 0
