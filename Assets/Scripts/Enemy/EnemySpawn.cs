@@ -38,11 +38,6 @@ public class EnemySpawn : MonoBehaviour
             );
 
             GameObject spawnedEnemy = ObjectPoolForEnemy.Instance.GetEnemy(randomEnemyType.Name, randomPosition, Quaternion.identity);
-
-            if (spawnedEnemy != null)
-            {
-                Debug.Log($"Spawned enemy: {randomEnemyType.Name} at position {randomPosition}");
-            }
         }
     }
 }

@@ -36,6 +36,6 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void Die()
     {
-        Debug.Log("Временная заглушка");
+        PlayerDeathManager.Instance.OnPlayerDeath();
     }
 }
