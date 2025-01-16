@@ -15,7 +15,13 @@ public class HpBar : MonoBehaviour
     private void OnEnable()
     {
         _health.OnHealthChanged += UpdateHPBar;
-        _previousHP = _health.CurrentHp; }
+        _previousHP = _health.CurrentHp; 
+    }
+
+    private void Start()
+    {
+        _previousHP = _health.CurrentHp;
+    }
 
     private void OnDisable()
     {

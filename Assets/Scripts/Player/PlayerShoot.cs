@@ -29,6 +29,17 @@ public class PlayerShoot : MonoBehaviour
             _rangeAttack = _stats.RangeAttack;
             _maxCountBullet = _stats.MaxCountBullets;
         }
+
+        
+    }
+
+    private void Start()
+    {
+        if (_textBullet == null)
+        {
+            _textBullet = UIManager.Instance.TextForShoot;
+        }
+
         _currentCountBullet = _maxCountBullet;
         UpdateBulletText();
     }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BasicPlayerStats
   m_EditorClassIdentifier: 
   _maxHp: 100
-  _movementSpeed: 5
+  _movementSpeed: 10
   _rangeAttack: 20
   _nameProjectile: 0
   _throwForce: 10

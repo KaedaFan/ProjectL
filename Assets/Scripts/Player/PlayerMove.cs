@@ -22,9 +22,16 @@ public class PlayerMove : MonoBehaviour
         _rigibody = GetComponent<Rigidbody2D>();
         if (_player == null) _player = this.gameObject;
 
-        //скорость передвижения загружается из SO скрипта если он создан
         if (_stats != null) _movementSpeed = _stats.MovementSpeed;
         else _movementSpeed = _moveSpeedFromInspector;
+    }
+
+    private void Start()
+    {
+        if (_joystick == null)
+        {
+            _joystick = UIManager.Instance.Joysick;
+        }
     }
 
     private void Update()
